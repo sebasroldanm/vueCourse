@@ -1,48 +1,28 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VueJS</title>
-    <script src="vue.js"></script>
+    <title>Vue Bluu</title>
 </head>
 
 <body>
-
     <div id="app">
-        <button v-on:click="increase(2, $event)">Click me</button>
-        <p>{{ counter }}</p>
-        <p v-on:mousemove="updateCoordinates">
-            Coordenadas: {{ x }} / {{ y }} -
-            <span v-on:mousemove.stop.prevent="">Punto Muerto</span>
-        </p>
-        <input type="text" v-on:keyup.space.enter="alertMe">
+        <h1>{{ titulo }}</h1>
+
+
+        <ul>
+            <li v-for="fruta of frutas">
+                <span v-if="fruta.cantidad != 0">{{ fruta.nombre }} - {{ fruta.cantidad }}</span>
+                <span v-else>{{ fruta.nombre }} - Sin stock</span>
+            </li>
+        </ul>
+
     </div>
 
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                counter: 0,
-                x: 0,
-                y: 0
-            },
-            methods: {
-                increase: function (step, event) {
-                    this.counter += step;
-                },
-                updateCoordinates: function (event) {
-                    this.x = event.clientX;
-                    this.y = event.clientY;
-                },
-                alertMe: function () {
-                    alert('Alert!');
-                }
-            }
-        });
-    </script>
-
+    <script src="js/vue.js"></script>
+    <script src="01.js"></script>
 </body>
 
 </html>
