@@ -1,5 +1,5 @@
 Vue.component('saludo',{
-    template: //
+    template:
     `
     <div>
         <h1>{{ saludo }}</h1>
