@@ -33,12 +33,14 @@
 <body>
 
     <div id="app">
-        <div class="demo" :style="{backgroundColor: color}"></div>
-        <div class="demo" :style="myStyle"></div>
-        <div class="demo" :style="[myStyle, {height: width + 'px'}]"></div>
-        <hr>
-        <input type="text" v-model="color">
-        <input type="text" v-model="width">
+        <p v-if="show">You can see me!</p>
+        <P v-else>Now you see me!?</P>
+        <template v-if="template">
+            <p v-show="show">ID</p>
+            <P>Do you also see me?</P>
+        </template>
+        <button @click="show = !show">Change</button>
+        <button @click="template = !template">Change template</button>
     </div>
 
 
@@ -46,18 +48,11 @@
         new Vue({
             el: '#app',
             data: {
-                color: 'gray',
-                width: 100
-            },
-            computed: {
-                myStyle: function () {
-                    return {
-                        backgroundColor: this.color,
-                        width: this.width + 'px'
-                    }
-                }
+                show: true,
+                template: true,
             }
         })
+
     </script>
 
 </body>
