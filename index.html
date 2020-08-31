@@ -11,32 +11,22 @@
 <body>
 
     <div id="app">
-        <button v-on:click="counter++">Incrementar</button>
-        <button v-on:click="counter--">Decrease</button>
-        <button v-on:click="secondCounter++">Increase Second</button>
-        <p>Incrementar: {{ counter }} | {{ secondCounter }}</p>
-        <p>Resultado: {{ result }} | {{ output }}</p>
+        <button v-on:click="changeLink">Click to Change Link</button>
+        <button @click="changeLink">Click to Change Link</button>
+
+        <a v-bind:href="link">Link</a>
+        <a :href="link">Link</a>
     </div>
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                counter: 0,
-                secondCounter: 0
+                link: 'https://www.youtube.com.co'
             },
-            computed: {
-                output() {
-                    console.log('Computed')
-                    return this.counter > 5 ? 'Great 5' : 'Smaller 5'
-                }
-            },
-            watch: {
-                counter(value) {
-                    var vm = this
-                    setTimeout(function () {
-                        vm.counter = 0
-                    }, 2000)
+            methods: {
+                changeLink: function () {
+                    this.link = 'google.com'
                 }
             }
         })
