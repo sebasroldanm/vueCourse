@@ -11,17 +11,35 @@
 <body>
 
     <div id="app">
-        <input type="text" v-model="name">
-        <p>{{ name }}</p>
+        <button v-on:click="counter++">Incrementar</button>
+        <button v-on:click="counter--">Decrease</button>
+        <button v-on:click="secondCounter++">Increase Second</button>
+        <p>Incrementar: {{ counter }} | {{ secondCounter }}</p>
+        <p>Resultado: {{ result }} | {{ output }}</p>
     </div>
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                name: 'Sebastian',
+                counter: 0,
+                secondCounter: 0
+            },
+            computed: {
+                output() {
+                    console.log('Computed')
+                    return this.counter > 5 ? 'Great 5' : 'Smaller 5'
+                }
+            },
+            watch: {
+                counter(value) {
+                    var vm = this
+                    setTimeout(function () {
+                        vm.counter = 0
+                    }, 2000)
+                }
             }
-        });
+        })
     </script>
 
 </body>
