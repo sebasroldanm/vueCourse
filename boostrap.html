@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>VueJS</title>
+</head>
+
+<body>
+    <div id="app" class="container mt-5">
+        <div class="container mt-5">
+            <div :class="['p-3', 'text-white', fondo]">
+                <p>
+                    Ab ducimus excepturi. Facilis impedit sint laboriosam aut amet. Dicta error exercitationem excepturi
+                    voluptatem provident sed et perspiciatis blanditiis. Praesentium illum ab modi placeat consectetur
+                    et
+                    tempore.
+
+                    Perferendis ex consequatur veniam cumque. Temporibus eos eos possimus. Fugit ea et.
+
+                    Ut beatae a possimus maiores cumque est earum et natus. Quibusdam est nisi voluptatem aut. Occaecati
+                    iure eligendi expedita modi optio ipsum harum. In voluptate ad sit quisquam eveniet animi qui
+                    tempora.
+                </p>
+            </div>
+            <input type="text" class="form-control my-3" v-model="fondo">
+            <div class="text-white p-3" :class="{'bg-info' : color, 'bg-success' :!color}">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est illo ipsum nemo suscipit quisquam
+                    iusto, sint consectetur ea, porro dolorem iure facilis blanditiis ratione possimus. Quae neque
+                    cupiditate delectus! Consequuntur.
+                </p>
+            </div>
+
+            <button class="btn btn-primary" @click="color = !color">Cambiar Color de Fondo</button>
+        </div>
+
+        <script src="js/vue.js"></script>
+        <script src="02.js"></script>
+</body>
+
+</html>

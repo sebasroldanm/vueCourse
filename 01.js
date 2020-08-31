@@ -16,7 +16,8 @@ const app = new Vue({
             }
         ],
         nuevaFruta: '',
-        total: 0
+        total: 0,
+        fondo: 'bg-warning'
     },
     methods: {
         agregarFruta() {
