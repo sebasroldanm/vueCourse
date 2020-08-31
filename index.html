@@ -33,26 +33,45 @@
 <body>
 
     <div id="app">
-        <p v-if="show">You can see me!</p>
-        <P v-else>Now you see me!?</P>
-        <template v-if="template">
-            <p v-show="show">ID</p>
-            <P>Do you also see me?</P>
+
+        <ul>
+            <li v-for="(ingredient, i) in ingredients">{{ ingredient }} - {{ i }}</li>
+        </ul>
+
+        <hr>
+        <template v-for="(ingredient, index) in ingredients">
+            <p>{{ ingredient}} - {{ index }}</p>
         </template>
-        <button @click="show = !show">Change</button>
-        <button @click="template = !template">Change template</button>
+        <button @click="ingredients.push('spices')">Add Spices</button>
+        <hr>
+        <ul>
+            <li v-for="(value, key) in persons">{{ key }}: {{ value.name }}</li>
+        </ul>
+        <hr>
+        <span v-for="n in 10">{{ n }}, </span>
+
     </div>
+
 
 
     <script>
         new Vue({
             el: '#app',
             data: {
-                show: true,
-                template: true,
+                ingredients: ['meat', 'fruit', 'cookies'],
+                persons: [{
+                    name: 'Juan',
+                    age: 27,
+                    color: 'red'
+                },
+                {
+                    name: 'Ana',
+                    age: 21,
+                    color: 'blue'
+                },
+                ]
             }
         })
-
     </script>
 
 </body>
