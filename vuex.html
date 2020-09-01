@@ -22,9 +22,17 @@
         Vue.component('titulo', {
             template:
                 `<div>
-                    <h3>Numero {{ $store.state.numero }}</h3>
+                    <h3>Numero {{ numero }}</h3>
                     <hijo></hijo>
-                </div>`
+                </div>`,
+            computed: {
+                // numero() {
+                //     return store.state.numero
+                // }
+                ...Vuex.mapState([
+                    'numero'
+                ])
+            }
         })
 
         Vue.component('hijo', {
