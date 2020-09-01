@@ -32,6 +32,8 @@
 
 <body>
 
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     <div id="app1">
         <h1 ref="heading">{{ title }}</h1>
         <button v-on:click="show" ref="myButton">Show Paragraph</button>
@@ -42,9 +44,20 @@
         <h1>{{ title }}</h1>
     </div>
 
+    <div id="app3"></div>
+
 
 
     <script>
+        var data = {
+            title: 'The VueJS Instance',
+            showParagraph: false
+        }
+
+        Vue.component('hello', {
+            template: '<h1>Hello!</h1>'
+        })
+
         const vm1 = new Vue({
             el: '#app1',
             data: {
@@ -86,6 +99,15 @@
                 title: 'The Second Instance'
             }
         })
+
+
+        var vm3 = new Vue({
+            template: '<h1>Hello!</h1>'
+        })
+
+//vm3.$mount()
+//document.getElementById('app3').appendChild(vm3.$el)
+
 
     </script>
 
