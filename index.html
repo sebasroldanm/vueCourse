@@ -32,46 +32,61 @@
 
 <body>
 
-    <div id="app">
+    <div id="app1">
+        <h1 ref="heading">{{ title }}</h1>
+        <button v-on:click="show" ref="myButton">Show Paragraph</button>
+        <p v-if="showParagraph">This is not alway visible</p>
+    </div>
 
-        <ul>
-            <li v-for="(ingredient, i) in ingredients">{{ ingredient }} - {{ i }}</li>
-        </ul>
-
-        <hr>
-        <template v-for="(ingredient, index) in ingredients">
-            <p>{{ ingredient}} - {{ index }}</p>
-        </template>
-        <button @click="ingredients.push('spices')">Add Spices</button>
-        <hr>
-        <ul>
-            <li v-for="(value, key) in persons">{{ key }}: {{ value.name }}</li>
-        </ul>
-        <hr>
-        <span v-for="n in 10">{{ n }}, </span>
-
+    <div id="app2">
+        <h1>{{ title }}</h1>
     </div>
 
 
 
     <script>
-        new Vue({
-            el: '#app',
+        const vm1 = new Vue({
+            el: '#app1',
             data: {
-                ingredients: ['meat', 'fruit', 'cookies'],
-                persons: [{
-                    name: 'Juan',
-                    age: 27,
-                    color: 'red'
+                title: 'The VueJS Instance',
+                showParagraph: false
+            },
+            methods: {
+                show: function () {
+                    this.showParagraph = true
+                    this.updateTitle('The VueJS Instance (Updated)')
+                    this.$refs.myButton.innerText = 'Test'
                 },
-                {
-                    name: 'Ana',
-                    age: 21,
-                    color: 'blue'
-                },
-                ]
+                updateTitle: function (title) {
+                    this.title = title;
+                }
+            },
+            computed: {
+                lowercaseTitle: function () {
+                    return this.title.toLowerCase();
+                }
+            },
+            watch: {
+                title: function (value) {
+                    alert('Title changed, new value: ' + value);
+                }
+            }
+        });
+
+        vm1.$refs.heading.innterText = 'Someting else'
+
+        setTimeout(function () {
+            vm1.newProp = 'New!'
+            vm1.show()
+        }, 3000)
+
+        const vm2 = new Vue({
+            el: '#app2',
+            data: {
+                title: 'The Second Instance'
             }
         })
+
     </script>
 
 </body>
