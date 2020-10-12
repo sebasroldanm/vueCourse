@@ -15,6 +15,40 @@ const app = Vue.createApp({
         // console.dir(this.$refs.userText);
       },
     },
+
+    beforeCreate() {
+      console.log('breforeCreate');
+    },
+
+    created() {
+      console.log('created()');
+    },
+
+    beforeMount() {
+      console.log('brefore Mount');
+    },
+
+    mounted() {
+      console.log('mounted');
+    },
+
+    beforeUpdate() {
+      console.log('breforeUpdate');
+      // alert('beforeUpdate')
+    },
+
+    updated() {
+      console.log('update');
+      // alert('updated')
+    },
+
+    beforeUnmount() {
+      console.log('beforeUnmount');
+    },
+
+    unmonted() {
+      console.log('unmonted');
+    }
   });
   
   app.mount('#app');
