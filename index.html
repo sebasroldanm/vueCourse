@@ -17,7 +17,7 @@
   </header>
   <section id="app">
     <h2>Cómo funciona Vue</h2>
-    <input type="text" @input="saveInput">
+    <input type="text" ref="userText">
     <button @click="setText">Establecer texto</button>
     <p>{{ message }}</p>
   </section>
