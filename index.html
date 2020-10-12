@@ -1,116 +1,26 @@
 <!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VueJS</title>
-    <script src="vue.js"></script>
-</head>
-
-<style>
-    .demo {
-        width: 100px;
-        height: 100px;
-        background-color: gray;
-        display: inline-block;
-        margin: 10px;
-    }
-
-    .red {
-        background-color: red;
-    }
-
-    .blue {
-        background-color: blue;
-    }
-
-    .green {
-        background-color: green;
-    }
-</style>
-
-<body>
-
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
-    <div id="app1">
-        <h1 ref="heading">{{ title }}</h1>
-        <button v-on:click="show" ref="myButton">Show Paragraph</button>
-        <p v-if="showParagraph">This is not alway visible</p>
-    </div>
-
-    <div id="app2">
-        <h1>{{ title }}</h1>
-    </div>
-
-    <div id="app3"></div>
-
-
-
-    <script>
-        var data = {
-            title: 'The VueJS Instance',
-            showParagraph: false
-        }
-
-        Vue.component('hello', {
-            template: '<h1>Hello!</h1>'
-        })
-
-        const vm1 = new Vue({
-            el: '#app1',
-            data: {
-                title: 'The VueJS Instance',
-                showParagraph: false
-            },
-            methods: {
-                show: function () {
-                    this.showParagraph = true
-                    this.updateTitle('The VueJS Instance (Updated)')
-                    this.$refs.myButton.innerText = 'Test'
-                },
-                updateTitle: function (title) {
-                    this.title = title;
-                }
-            },
-            computed: {
-                lowercaseTitle: function () {
-                    return this.title.toLowerCase();
-                }
-            },
-            watch: {
-                title: function (value) {
-                    alert('Title changed, new value: ' + value);
-                }
-            }
-        });
-
-        vm1.$refs.heading.innterText = 'Someting else'
-
-        setTimeout(function () {
-            vm1.newProp = 'New!'
-            vm1.show()
-        }, 3000)
-
-        const vm2 = new Vue({
-            el: '#app2',
-            data: {
-                title: 'The Second Instance'
-            }
-        })
-
-
-        var vm3 = new Vue({
-            template: '<h1>Hello!</h1>'
-        })
-
-//vm3.$mount()
-//document.getElementById('app3').appendChild(vm3.$el)
-
-
-    </script>
-
-</body>
-
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <h1>Vue detrás de las escenas</h1>
+    </header>
+    <section id="app">
+      <h2>Cómo funciona Vue</h2>
+      <input type="text" @input="saveInput">
+      <button @click="setText">Establecer texto</button>
+      <p>{{ message }}</p>
+    </section>
+  </body>
 </html>
