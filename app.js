@@ -19,6 +19,9 @@ const app = Vue.createApp({
 
 
   const app2 = Vue.createApp({
+    template: `
+      <p>{{ comidaFav }}</p>
+      `,
     data() {
       return {
         comidaFav: 'Pizza'
