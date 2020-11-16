@@ -8,11 +8,13 @@
               name = "Manuel Lopez"
               phone-number = "+57 312 6529966"
               email-address = "manuel@app.com"
+              is-favorite = "1"
             ></friend-contact>
             <friend-contact 
               name = "Lina Contreras"
               phone-number = "+57 300 2546632"
               email-address = "lina@app.com"
+              is-favorite = "0"
             ></friend-contact>
         </ul>
     </section>
