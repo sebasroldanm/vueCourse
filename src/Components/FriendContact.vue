@@ -1,8 +1,10 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite === '1' ? '(Favorite)' : '' }}</h2>
+    <h2>{{ name }} {{ isFavorite === true ? "(Favorite)" : "" }}</h2>
     <button @click="tooglefavorite">Toogle Favorite</button>
-    <button @click="toogleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }}</button>
+    <button @click="toogleDetails">
+      {{ detailsAreVisible ? "Hide" : "Show" }}
+    </button>
     <ul v-if="detailsAreVisible">
       <li><strong>Phone: </strong>{{ phoneNumber }}</li>
       <li><strong>Emial: </strong>{{ emailAddress }}</li>
@@ -15,42 +17,40 @@
 export default {
   // props: ['name', 'phoneNumber', 'emailAddress', 'isFavorite'],
   props: {
+    id: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
-      required: true
+      required: true,
     },
     phoneNumber: {
       type: String,
-      required: true
+      required: true,
     },
     emailAddress: {
       type: String,
-      required: true
+      required: true,
     },
     isFavorite: {
       required: true,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       detailsAreVisible: false,
-      friend: {
-        id: "manuel",
-        name: "Manuel Lopez",
-        phone: "+57 312 6529966",
-        email: "manuel@app.com",
-      },
-      friendIsFavorite: this.isFavorite,
     };
   },
   methods: {
-      toogleDetails() {
-          this.detailsAreVisible = !this.detailsAreVisible;
-      },
-      tooglefavorite() {
-        this.friendIsFavorite = !this.friendIsFavorite
-      }
+    toogleDetails() {
+      this.detailsAreVisible = !this.detailsAreVisible;
+    },
+    tooglefavorite() {
+      this.$emit("toggle-favorite", this.id);
+      // this.friendIsFavorite = !this.friendIsFavorite
+    },
   },
 };
 </script>
