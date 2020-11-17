@@ -28,12 +28,8 @@ export default {
       required: true
     },
     isFavorite: {
-      type: String,
-      required: false,
-      default: '0',
-      validator: function(value) {
-        return value === '1' || value === '0'
-      }
+      required: true,
+      default: false
     }
   },
   data() {
@@ -53,11 +49,7 @@ export default {
           this.detailsAreVisible = !this.detailsAreVisible;
       },
       tooglefavorite() {
-          if (this.friendIsFavorite === '1') {
-            this.friendIsFavorite = '0'
-          } else {
-            this.friendIsFavorite = '1'
-          }
+        this.friendIsFavorite = !this.friendIsFavorite
       }
   },
 };
